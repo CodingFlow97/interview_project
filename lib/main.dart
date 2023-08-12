@@ -2,11 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:interview/pages/home_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
+
+  final MaterialColor mycolor = MaterialColor(
+    const Color.fromRGBO(255, 255, 255, 1).value,
+    const <int, Color>{
+      50: Color.fromRGBO(255, 255, 255, 0.1),
+      100: Color.fromRGBO(255, 255, 255, 0.2),
+      200: Color.fromRGBO(255, 255, 255, 0.3),
+      300: Color.fromRGBO(255, 255, 255, 0.4),
+      400: Color.fromRGBO(255, 255, 255, 0.5),
+      500: Color.fromRGBO(255, 255, 255, 0.6),
+      600: Color.fromRGBO(255, 255, 255, 0.7),
+      700: Color.fromRGBO(255, 255, 255, 0.8),
+      800: Color.fromRGBO(255, 255, 255, 0.9),
+      900: Color.fromRGBO(255, 255, 255, 1),
+    },
+  );
 
   // This widget is the root of your application.
   @override
@@ -15,27 +31,16 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a blue toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+        primarySwatch: mycolor,
+        brightness: Brightness.light,
       ),
-      home: HomeScreen(key: UniqueKey(),),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+      ),
+      themeMode: ThemeMode.system,
+      home: HomeScreen(
+        key: UniqueKey(),
+      ),
     );
   }
 }
-
-
